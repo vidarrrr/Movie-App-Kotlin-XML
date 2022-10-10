@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.MovieDetailsFragment">
+
+
+    <ImageView
+        android:id="@+id/iv_movie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/movie_poster" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/custom_marginEnd"
+        android:layout_marginStart="@dimen/custom_marginStart"
+        android:layout_marginTop="@dimen/custom_marginTop"
+        app:cardCornerRadius="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_movie">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/custom_size">
+
+            <ImageView
+                android:id="@+id/iv_star"
+                android:layout_width="@dimen/image_min_size"
+                android:layout_height="@dimen/image_min_size"
+                android:layout_marginStart="@dimen/large_padding"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:src="@drawable/star"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/star" />
+
+            <ImageView
+                android:id="@+id/iv_star_select"
+                android:layout_width="@dimen/image_min_size"
+                android:layout_height="@dimen/image_min_size"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:src="@drawable/star1"
+                app:layout_constraintEnd_toStartOf="@+id/tv_meta_score"
+                app:layout_constraintStart_toEndOf="@+id/iv_star"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/star" />
+
+            <TextView
+                android:id="@+id/tv_hundred_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/app_name"
+                app:layout_constraintEnd_toEndOf="@+id/iv_star"
+                app:layout_constraintStart_toStartOf="@+id/iv_star"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ten_score" />
+
+            <TextView
+                android:id="@+id/tv_ten_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="@dimen/min_text_size"
+                android:textStyle="bold"
+
+                app:layout_constraintEnd_toEndOf="@+id/iv_star"
+                app:layout_constraintStart_toStartOf="@+id/iv_star"
+                app:layout_constraintTop_toBottomOf="@+id/iv_star" />
+
+            <TextView
+                android:id="@+id/tv_meta_score"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/image_min_size"
+                android:layout_marginEnd="@dimen/large_concat_margin"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:gravity="center_vertical"
+                android:text="@string/_86"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:background="#00FF00"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_rate_this"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_this"
+                android:textSize="@dimen/min_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/iv_star_select"
+                app:layout_constraintStart_toStartOf="@+id/iv_star_select"
+                app:layout_constraintTop_toBottomOf="@+id/iv_star_select" />
+
+            <TextView
+                android:id="@+id/tv_meta_score_constant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metascore"
+                android:textSize="@dimen/min_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tv_meta_score"
+                app:layout_constraintStart_toStartOf="@+id/tv_meta_score"
+                app:layout_constraintTop_toBottomOf="@+id/tv_meta_score" />
+
+            <TextView
+                android:id="@+id/tv_meta_score_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                app:layout_constraintEnd_toEndOf="@+id/tv_meta_score"
+                app:layout_constraintStart_toStartOf="@+id/tv_meta_score"
+                app:layout_constraintTop_toBottomOf="@+id/tv_meta_score_constant" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:text="@string/app_name"
+        android:textSize="@dimen/bold_text_size_def"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_score" />
+
+    <TextView
+        android:id="@+id/tv_movie_year_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginEnd="@dimen/def_margin"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:text="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_title" />
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_types"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/concat_margin"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_year_time">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_types"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/concat_margin"
+            android:orientation="horizontal"
+
+
+            app:singleLine="true"
+
+            app:singleSelection="true">
+
+            <!--<com.google.android.material.chip.Chip
+                android:id="@+id/chip_action"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_crime"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crime" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_comedy"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comedy" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDram"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dram" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action1" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip5"
+                style="@style/ChipTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action2" />-->
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="@dimen/size_crew"
+        android:layout_height="@dimen/size_crew"
+        android:layout_marginEnd="@dimen/def_margin"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:background="@drawable/background_button"
+        android:src="@drawable/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_score"
+        android:contentDescription="@string/watch_list" />
+
+    <TextView
+        android:id="@+id/tv_plot_summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:text="@string/plot_summary"
+        android:textSize="@dimen/bold_text_size_min"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hsv_types" />
+
+    <TextView
+        android:id="@+id/tv_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:text="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_plot_summary"
+        android:layout_marginEnd="@dimen/def_margin"
+        />
+
+    <TextView
+        android:id="@+id/tv_cac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:text="@string/cast_amp_crew"
+        android:textSize="@dimen/bold_text_size_min"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_summary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/min_margin_top"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cac"
+        tools:listitem="@layout/rv_movie_bg"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginEnd="@dimen/def_margin"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

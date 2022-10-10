@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="0dp"
+    android:paddingEnd="@dimen/rv_movie_bg_cl_padding">
+
+    <ImageView
+        android:id="@+id/iv_crew"
+        android:layout_width="@dimen/size_crew"
+        android:layout_height="@dimen/size_crew"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/actor_image" />
+
+    <TextView
+        android:id="@+id/tv_crew_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:text="@string/app_name"
+        android:gravity="center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_crew_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/min_margin_top"
+        android:gravity="center_horizontal"
+        android:text="@string/app_name" />
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rv_constraint_padding_end">12dp</dimen>
+    <dimen name="rv_constraint_padding_start">0dp</dimen>
+    <dimen name="default_margin_top">16dp</dimen>
+    <dimen name="large_margin_top">24dp</dimen>
+    <dimen name="min_margin_top">8dp</dimen>
+    <dimen name="rv_movies_cl_padding">12dp</dimen>
+    <dimen name="drawable_padding">16dp</dimen>
+    <dimen name="rv_movie_bg_cl_padding">24dp</dimen>
+    <dimen name="size_crew">64dp</dimen>
+    <dimen name="image_min_size">24dp</dimen>
+    <dimen name="def_margin">16dp</dimen>
+    <dimen name="concat_margin">40dp</dimen>
+    <dimen name="large_concat_margin">96dp</dimen>
+    <dimen name="large_padding">48dp</dimen>
+    <dimen name="custom_marginStart">32dp</dimen>
+    <dimen name="custom_marginTop">-32dp</dimen>
+    <dimen name="custom_marginEnd">-48dp</dimen>
+    <dimen name="custom_size">100dp</dimen>
+
+    <dimen name="bold_text_size_def">32sp</dimen>
+    <dimen name="bold_text_size_min">20sp</dimen>
+    <dimen name="min_text_size">16sp</dimen>
+
+
+</resources>

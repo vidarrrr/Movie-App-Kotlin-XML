@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Movie App</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu">Menu</string>
+    <string name="search">Search</string>
+    <string name="current_tab">Current tab</string>
+    <string name="action">Action</string>
+    <string name="crime">Crime</string>
+    <string name="comedy">Comedy</string>
+    <string name="drama">Drama</string>
+    <string name="action1">Action1</string>
+    <string name="action2">Action2</string>
+    <string name="plot_summary">Plot Summary</string>
+    <string name="cast_amp_crew"><![CDATA[Cast & Crew]]></string>
+    <string name="rate_this">Rate This</string>
+    <string name="metascore">Metascore</string>
+    <string name="watch_list">WATCH LIST</string>
+    <string name="actor_image">Actor Image</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="_8_2">8.2</string>
+    <string name="star">Star</string>
+    <string name="_86">86</string>
+    <string name="_9_9">9.9/10</string>
+    <string name="_150">150,212</string>
+    <string name="_99">99</string>
+    <string name="_62_critic_reviews">62 critic reviews</string>
+</resources>
