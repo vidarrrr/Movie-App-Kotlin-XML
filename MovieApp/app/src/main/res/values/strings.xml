@@ -24,4 +24,8 @@
     <string name="_150">150,212</string>
     <string name="_99">99</string>
     <string name="_62_critic_reviews">62 critic reviews</string>
+    <string name="not_found">Not found</string>
+    <string name="rate">Rate</string>
+    <string name="cancel">Cancel</string>
+    <string name="rate_movie">Rate Movie</string>
 </resources>

@@ -2,6 +2,7 @@ package com.movie.app.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
@@ -13,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.google.android.material.navigation.NavigationView
+import com.movie.app.R
 import com.movie.app.adapters.MovieAdapter
 import com.movie.app.adapters.TabAdapter
 import com.movie.app.common.Constants
@@ -238,6 +241,31 @@ class StartFragment : Fragment() {
 
             } else if (resource.status == Status.ERROR) {
                 Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+        //if the item is in the adapter list there is a possibility to display the item
+        //there is no search function implemented by title in the api
+        //can fetch and search all data, but what if data is large
+        //but this api is small could be implement with MediatorLiveData with getMovies()
+        //+ getBoxOffice() + getComingSoon()
+        //https://developer.android.com/reference/androidx/lifecycle/MediatorLiveData
+        fragmentStartBinding.nvMenu.setNavigationItemSelectedListener(object:NavigationView.OnNavigationItemSelectedListener{
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                val title = item.title.toString()
+                val movie = movieAdapter.getWatchListMovie(title)
+                if(movie?.size==0) {
+                    Toast.makeText(requireContext(),getString(R.string.not_found),Toast.LENGTH_SHORT).show()
+                    return false
+                }
+                movie?.first()?.let {
+                    val action = StartFragmentDirections.actionStartFragmentToMovieDetailsFragment(it)
+                    findNavController().navigate(action)
+                    return true
+                }
+                Toast.makeText(requireContext(),getString(R.string.not_found),Toast.LENGTH_SHORT).show()
+                return false
             }
 
         })

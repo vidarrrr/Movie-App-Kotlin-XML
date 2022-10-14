@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -16,8 +17,10 @@ import com.movie.app.R
 import com.movie.app.adapters.ActorsAdapter
 import com.movie.app.common.Constants
 import com.movie.app.data.source.local.SharedPrefs
+import com.movie.app.databinding.AlertDialogBinding
 import com.movie.app.databinding.FragmentMovieDetailsBinding
 import com.movie.app.model.MovieModel
+import java.lang.NumberFormatException
 
 
 private const val ARG_PARAM1 = "movie"
@@ -60,6 +63,9 @@ class MovieDetailsFragment : Fragment() {
                     )
                     .transform(GranularRoundedCorners(0f, 0f, 32f, 32f))
                     .into(ivMovie)
+                tvRateThis.setOnClickListener {
+                    showRateDialog()
+                }
                 tvTenScore.text = getString(R.string._9_9)
                 tvHundredScore.text = getString(R.string._150)
                 tvMetaScore.text = getString(R.string._99)
@@ -114,6 +120,39 @@ class MovieDetailsFragment : Fragment() {
 
 
 
+    }
+
+    private fun showRateDialog() {
+        val alertDialogBinding = AlertDialogBinding.inflate(LayoutInflater.from(context))
+        val alertDialogBuilder = AlertDialog.Builder(requireContext())
+        alertDialogBuilder.setView(alertDialogBinding.root)
+        val alertDialog = alertDialogBuilder.create()
+
+        alertDialogBinding.btnRate.setOnClickListener {
+            val text = alertDialogBinding.etRate.text.toString()
+            val message:String = if (text.isNotEmpty() || text.isNotBlank()) {
+                try {
+                    val rate = text.toInt()
+                    if (rate < 0 || rate > 5) {
+                        "Rate is not in range [0-5]"
+                    } else {
+                        text
+                    }
+                } catch (e: NumberFormatException) {
+                    "Number Format Error"
+                }
+            } else {
+                "Empty or Blank"
+            }
+            Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+            alertDialog.dismiss()
+        }
+
+        alertDialogBinding.btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     private fun removeFromWatchList(context: Context, sharedPrefs: SharedPrefs, title: String) {

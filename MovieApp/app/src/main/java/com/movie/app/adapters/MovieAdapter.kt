@@ -149,6 +149,15 @@ class MovieAdapter(private val onClickItem: (MovieModel) -> Unit) :
         }
     }
 
+    fun getWatchListMovie(name: String): List<MovieModel>? {
+        allList?.let{
+            return it.filter { movieModel ->
+                movieModel.title.equals(name,true)
+            }
+        }
+        return null
+    }
+
     fun resetAllList() {
         allList?.let {
             submitList(it)
