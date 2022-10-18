@@ -75,11 +75,19 @@ class MovieAdapter(private val onClickItem: (MovieModel) -> Unit) :
 
 
     fun searchMovieByName(name: String, chip: Int, chipName: String?) {
-        val mutableList: MutableList<MovieModel> = mutableListOf()
+        //val mutableList: MutableList<MovieModel> = mutableListOf()
+        var list:List<MovieModel> = listOf()
         allList?.let {
             //selected chip name + search text
             if (chip != -1 && chip >= 0) {
-                for (movie in it) {//currentList
+                chipName?.let { chipName1 ->
+                    list = it.filter { movieModel ->
+                        movieModel.title.contains(name,true)
+                                && movieModel.genres.contains(chipName1,true)
+                    }
+                }
+
+                /*for (movie in it) {//currentList
                     chipName?.let { chipName1 ->
                         if (movie.title.lowercase()
                                 .contains(name.lowercase()) && movie.genres.lowercase()
@@ -87,26 +95,37 @@ class MovieAdapter(private val onClickItem: (MovieModel) -> Unit) :
                         ) {
                             mutableList.add(movie)
                         }
+                        it.filter { movieModel ->
+                            movieModel.title.lowercase().contains(name.lowercase())
+                                    && movieModel.genres.lowercase().contains(chipName1.lowercase())
+                        }
                     }
 
-                }
+                }*/
             } else {
                 //only search text
-                for (movie in it) {//currentList
+                list = it.filter { movieModel ->
+                    movieModel.title.contains(name,true)
+                }
+                /*for (movie in it) {//currentList
                     if (movie.title.lowercase().contains(name.lowercase())) {
                         mutableList.add(movie)
                     }
-                }
+                }*/
             }
-            if (mutableList.size == 0) {
+            //if (mutableList.size == 0) {
+            if (list.isEmpty()) {
                 val count = itemCount
                 submitList(null)
                 notifyItemRangeRemoved(0, count)
             } else {
-                submitList(mutableList.toList())
-                notifyItemChanged(0, mutableList.size)
+                submitList(list.toList())
+                //submitList(mutableList.toList())
+                notifyItemChanged(0, list.size)
+                //notifyItemChanged(0, mutableList.size)
             }
         }
+
     }
 
     //permutation
@@ -115,11 +134,16 @@ class MovieAdapter(private val onClickItem: (MovieModel) -> Unit) :
     //only selected search text
     //selected chip + search text
     fun searchMovieByType(typeName: String, searchViewText: String) {
-        val mutableList: MutableList<MovieModel> = mutableListOf()
+        //val mutableList: MutableList<MovieModel> = mutableListOf()
+        var list:List<MovieModel> = listOf()
         allList?.let {
             //selected chip name + search text
             if (searchViewText.isNotEmpty() || searchViewText.isNotBlank()) {
-                for (movie in it) {
+                list = it.filter { movieModel ->
+                    movieModel.genres.contains(typeName,true)
+                            && movieModel.title.contains(searchViewText,true)
+                }
+                /*for (movie in it) {
 
                     if (movie.genres.lowercase()
                             .contains(typeName.lowercase()) && movie.title.lowercase()
@@ -127,24 +151,30 @@ class MovieAdapter(private val onClickItem: (MovieModel) -> Unit) :
                     ) {
                         mutableList.add(movie)
                     }
-                }
+                }*/
             } else {
                 //only selected chip
-                for (movie in it) {
+                list = it.filter { movieModel ->
+                    movieModel.genres.contains(typeName,true)
+                }
+                /*for (movie in it) {
 
                     if (movie.genres.lowercase().contains(typeName.lowercase())) {
                         mutableList.add(movie)
                     }
-                }
+                }*/
             }
 
-            if (mutableList.size == 0) {
+            //if (mutableList.size == 0) {
+            if (list.isEmpty()) {
                 val count = itemCount
                 submitList(null)
                 notifyItemRangeRemoved(0, count)
             } else {
-                submitList(mutableList.toList())
-                notifyItemChanged(0, mutableList.size)
+                submitList(list.toList())
+                //submitList(mutableList.toList())
+                notifyItemChanged(0, list.size)
+                //notifyItemChanged(0, mutableList.size)
             }
         }
     }

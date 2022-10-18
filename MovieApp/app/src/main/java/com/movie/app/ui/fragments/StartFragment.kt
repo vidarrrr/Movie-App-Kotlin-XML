@@ -273,12 +273,12 @@ class StartFragment : Fragment() {
 
     private fun updateMenuItems() {
         val sharedPrefs = SharedPrefs()
-        val index = sharedPrefs.getParamMenuIndex(requireContext())
+        val index = sharedPrefs.getParam<Int>(requireContext(),Constants.MENU_INDEX)
         fragmentStartBinding.nvMenu.menu.clear()
         for (value in 0 until index) {
 
             fragmentStartBinding.nvMenu.menu.add(
-                sharedPrefs.getParamString(
+                sharedPrefs.getParam<String>(
                     requireContext(),
                     "${Constants.MENU_ITEM_SUFFIX}${value}"
                 )

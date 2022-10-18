@@ -1,6 +1,7 @@
 package com.movie.app.ui.fragments
 
 import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -59,7 +60,10 @@ class MovieDetailsFragment : Fragment() {
             with(fragmentMovieDetailsBinding) {
                 Glide.with(ivMovie.context).load(movieModel.poster)
                     .apply(
-                        RequestOptions().override(150, 200)
+                        //https://stackoverflow.com/questions/4743116/get-screen-width-and-height-in-android
+                        RequestOptions().fitCenter().override(Resources.getSystem().displayMetrics.widthPixels,
+                            (Resources.getSystem().displayMetrics.heightPixels*0.35).toInt()
+                        )
                     )
                     .transform(GranularRoundedCorners(0f, 0f, 32f, 32f))
                     .into(ivMovie)
@@ -83,7 +87,7 @@ class MovieDetailsFragment : Fragment() {
                     chip.setChipDrawable(drawable)
                     fragmentMovieDetailsBinding.cgTypes.addView(chip)
                 }
-                isWatched = SharedPrefs().getParamBoolean(
+                isWatched = SharedPrefs().getParam(
                     requireContext(),
                     movieModel.title
                 )
@@ -96,7 +100,7 @@ class MovieDetailsFragment : Fragment() {
             movie?.let {
                 isWatched = !isWatched
                 val sharedPrefs  = SharedPrefs()
-                sharedPrefs.setParamBoolean(
+                sharedPrefs.setParam(
                     requireContext(),
                     it.title,
                     isWatched
@@ -156,38 +160,36 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun removeFromWatchList(context: Context, sharedPrefs: SharedPrefs, title: String) {
-        var index = sharedPrefs.getParamMenuIndex(context)
+        var index = sharedPrefs.getParam<Int>(context,Constants.MENU_INDEX)
         val currentIndex = sharedPrefs.getParamMenuName(
             context,
             title,
             index
         )
-        /*sharedPrefs.removeParam(
-            requireContext(),
-            "${Constants.MENU_ITEM_SUFFIX}${index}"
-        )*/
         sharedPrefs.reorderParamMenu(
             context,
             currentIndex,
             index
         )
-        sharedPrefs.setParamMenuIndex(
+        sharedPrefs.setParam(
             context,
+            Constants.MENU_INDEX,
             --index
         )
 
     }
 
     private fun addToWatchList(context: Context, sharedPrefs: SharedPrefs, title: String) {
-        var index = sharedPrefs.getParamMenuIndex(context)
+        var index = sharedPrefs.getParam<Int>(context,Constants.MENU_INDEX)
         if(index<0) index = 0
-        sharedPrefs.setParamString(
+        sharedPrefs.setParam(
             context,
             "${Constants.MENU_ITEM_SUFFIX}${index}",
             title
         )
-        sharedPrefs.setParamMenuIndex(
+        sharedPrefs.setParam(
             context,
+            Constants.MENU_INDEX,
             ++index
         )
 

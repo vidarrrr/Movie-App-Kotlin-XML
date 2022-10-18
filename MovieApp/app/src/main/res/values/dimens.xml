@@ -13,7 +13,7 @@
     <dimen name="def_margin">16dp</dimen>
     <dimen name="concat_margin">40dp</dimen>
     <dimen name="large_concat_margin">96dp</dimen>
-    <dimen name="large_padding">48dp</dimen>
+    <dimen name="large_padding">64dp</dimen>
     <dimen name="custom_marginStart">32dp</dimen>
     <dimen name="custom_marginTop">-32dp</dimen>
     <dimen name="custom_marginEnd">-48dp</dimen>
